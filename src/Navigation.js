@@ -24,6 +24,7 @@ function Navigation() {
         Synth<span className="sub-title">Wave</span>
         <span className="dot"> . </span> <span className="io">io</span>
       </h1>
+      {user && <h3 className="super">{auth.currentUser.displayName}</h3>}
       {user ? (
         <button onClick={handleLogout} className="login">
           Logout

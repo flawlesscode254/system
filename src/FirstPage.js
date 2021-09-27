@@ -14,7 +14,7 @@ function FirstPage() {
   const handleSubmit = async () => {
     await db
       .collection("users").doc(auth.currentUser.email)
-      .add({
+      .set({
         username: username,
         admission: admission,
         classLevel: classLevel,
@@ -125,7 +125,7 @@ function FirstPage() {
         </form>
         <div id="next" className="next">
           <button id="next-btn" onClick={handleSubmit} className="next-button">
-            Next
+            Submit
           </button>
         </div>
       </div>

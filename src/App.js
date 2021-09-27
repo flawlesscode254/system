@@ -4,23 +4,24 @@ import db, { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 
 import FirstPage from "./FirstPage";
-import SecondPage from "./SecondPage";
 import Navigation from "./Navigation";
+import Details from "./Details";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [userName, setUserName] = useState('');
 
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
 
   useEffect(() => {
-    db.collection("users").onSnapshot((snapshot) => {
-      setData(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          username: doc.data().username,
-        }))
-      );
-    });
+    if (user) {
+    db.collection("users")
+      .doc(auth.currentUser.email)
+      .onSnapshot((snapshot) => {
+        snapshot.docs.forEach((doc) => {
+          setUserName(doc.data().username)
+        })
+      })
+    }
   }, []);
 
   return (
@@ -28,14 +29,16 @@ function App() {
       <Navigation />
       {user ? (
         <div>
-          {data ? (
-            <SecondPage />
-              ) : (
+          {userName ? (
+            <Details />
+          ) : (
             <FirstPage />
           )}
         </div>
-      ): (
-        <h1 className="error">You need to be logged in first before proceeding</h1>
+      ) : (
+        <h1 className="error">
+          You need to be logged in first before proceeding
+        </h1>
       )}
     </div>
   );

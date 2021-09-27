@@ -176,3 +176,37 @@
 .userName {
   color: white;
 }
+
+.mainDetails {
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.detailsHeading {
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+
+.details {
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 50%;
+  margin: 0 auto;
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+.super {
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+}
