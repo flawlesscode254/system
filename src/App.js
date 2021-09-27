@@ -35,7 +35,7 @@ function App() {
           )}
         </div>
       ): (
-        <h1 className="error">You need to be logged in first!!!</h1>
+        <h1 className="error">You need to be logged in first before proceeding</h1>
       )}
     </div>
   );
